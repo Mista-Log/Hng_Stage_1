@@ -46,9 +46,12 @@ def get_digit_sum(n):
 
 class MathAPIView(View):
 
-    def get(self, request, n):
+    def get(self, request):
+
+        number = request.GET.get("number") 
+
         try:
-            number = int(n)
+            number = int(number)
             is_prime = get_is_prime(number)
             is_perfect = get_is_perfect(number)
             properties = get_number_properties(number)
