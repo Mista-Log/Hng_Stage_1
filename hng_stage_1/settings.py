@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mathapp',
     'rest_framework',
     'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hng_stage_1.wsgi.application'
+
 
 
 # Database
