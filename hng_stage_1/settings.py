@@ -55,6 +55,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
+
+
+
 ROOT_URLCONF = 'hng_stage_1.urls'
 
 TEMPLATES = [
