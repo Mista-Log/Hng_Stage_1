@@ -66,10 +66,10 @@ class MathAPIView(View):
                 "fun_fact": fun_fact,
             }
             return JsonResponse(data, status=200)
-        except ValueError:
-            return JsonResponse({"number": "alphabet", "error": True}, status=400)
+        # except ValueError:
+        #     return JsonResponse({"number": "alphabet", "error": True}, status=400)
         except Exception as e:
-            return JsonResponse({"error": str(e)}, status=500)
+            return JsonResponse({"number": "alphabet", "error": True}, status=400)
 # class MathAPIView(APIView):
 #     def get(self, request, n):
 #         try:
