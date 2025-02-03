@@ -42,10 +42,6 @@ def get_digit_sum(n):
 
 
 
-
-
-
-
 class MathAPIView(APIView):
     def get(self, request, n):
         try:
