@@ -41,42 +41,11 @@ def get_digit_sum(n):
     return sum(int(d) for d in str(n))
 
 
-    # class NumberPropertiesAPIView(APIView):
-    #     def get(self, request, number):
-    #         try:
-    #             number = int(number)
-    #             properties = get_number_properties(number)
-    #             fun_fact = get_fun_fact(number)
-    #             digit_sum = get_digit_sum(number)
-    #             data = {
-    #                 "number": number,
-    #                 "properties": properties,
-    #                 "fun_fact": fun_fact,
-    #                 "digit_sum": digit_sum
-    #             }
-    #             return Response(data, status=status.HTTP_200_OK)
-    #         except ValueError:
-    #             return Response({"error": "Invalid number"}, status=status.HTTP_400_BAD_REQUEST)
-    #         except Exception as e:
-    #             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    # class NumberPropertiesAPIView(APIView):
-    #     def get(self, request, number):
-    #         try:
-    #             number = int(number)
-    #             properties = get_number_properties(number)
-    #             fun_fact = get_fun_fact(number)
-    #             digit_sum = get_digit_sum(number)
-    #             data = {
-    #                 "number": number,
-    #                 "properties": properties,
-    #                 "fun_fact": fun_fact,
-    #                 "digit_sum": digit_sum
-    #             }
-    #             return Response(data, status=status.HTTP_200_OK)
-    #         except ValueError:
-    #             return Response({"number": "alphabet", "error": True}, status=status.HTTP_400_BAD_REQUEST)
-    #         except Exception as e:
-    #             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+
+
 class MathAPIView(APIView):
     def get(self, request, n):
         try:
