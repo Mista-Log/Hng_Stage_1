@@ -7,5 +7,5 @@ from . import views
 
 
 urlpatterns = [
-    path('/api/classify-number/<int:n>/', views.MathAPIView.as_view()),
+    path('api/classify-number/<int:n>/', views.MathAPIView.as_view()),
 ]
