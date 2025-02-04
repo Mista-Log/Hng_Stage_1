@@ -112,8 +112,9 @@ class MathAPIView(APIView):
             "is_prime": is_prime,
             "is_perfect": is_perfect,
             "properties": properties,
-            "fun_fact": fun_fact,
             "digit_sum": digit_sum,
+            "fun_fact": fun_fact,
+
         }
 
         return Response(response_data, status=200)
