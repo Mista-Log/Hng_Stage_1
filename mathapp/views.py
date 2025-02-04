@@ -28,18 +28,20 @@ def get_fun_fact(n):
 
 def get_number_properties(n):
     properties = []
-    if n < 0:
-        return properties
-    if is_armstrong(n):
-        properties.append("armstrong")
+    if n > 0:
+        if is_armstrong(n):
+            properties.append("armstrong")
     if n % 2 == 0:
         properties.append("even")
     else:
         properties.append("odd")
     return properties
 
+
+
+
 def get_digit_sum(n):
-    return sum(int(d) for d in str(n))
+    return sum(int(d) for d in str(abs(n)))
 
 
 
@@ -75,6 +77,18 @@ def get_success_message():
     return {"message": "Request was successful", "status": 200}
 def get_bad_request_message():
     return {"number": "alphabet", "error": True},
+    # def get_number_properties(n):
+    #     properties = []
+    #     if n < 0:
+    #         properties.append("negative")
+    #     else:
+    #         if is_armstrong(n):
+    #             properties.append("armstrong")
+    #         if n % 2 == 0:
+    #             properties.append("even")
+    #         else:
+    #             properties.append("odd")
+    #     return properties
 class MathAPIView(APIView):
     def get(self, request):
         number = request.GET.get("number")
