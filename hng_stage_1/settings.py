@@ -28,7 +28,7 @@ INSTALLED_APPS = [
 
 
     'mathapp',
-    'rest_framework',
+    # 'rest_framework',
     'corsheaders',
 ]
 

@@ -1,7 +1,8 @@
-from rest_framework.views import APIView
+# from rest_framework.views import APIView
 import requests
 from django.http import JsonResponse
-from rest_framework.response import Response
+# from rest_framework.response import Response
+from django.views import View
 
 
 
@@ -76,7 +77,7 @@ def get_digit_sum(n):
 def get_success_message():
     return {"message": "Request was successful", "status": 200}
 def get_bad_request_message():
-    return {"number": "alphabet", "error": True},
+    return {"number": "alphabet", "error": True}
     # def get_number_properties(n):
     #     properties = []
     #     if n < 0:
@@ -89,35 +90,36 @@ def get_bad_request_message():
     #         else:
     #             properties.append("odd")
     #     return properties
-class MathAPIView(APIView):
-    def get(self, request):
-        number = request.GET.get("number")
 
-        if number is None:
-            return Response(get_bad_request_message(), status=400)
+# class MathAPIView(APIView):
+#     def get(self, request):
+#         number = request.GET.get("number")
 
-        try:
-            number = int(number)
-        except ValueError:
-            return Response(get_bad_request_message(), status=400)
+#         if number is None:
+#             return Response(get_bad_request_message(), status=400)
 
-        is_prime = get_is_prime(number)
-        is_perfect = get_is_perfect(number)
-        properties = get_number_properties(number)
-        fun_fact = get_fun_fact(number)
-        digit_sum = get_digit_sum(number)
+#         try:
+#             number = int(number)
+#         except ValueError:
+#             return Response(get_bad_request_message(), status=400)
 
-        response_data = {
-            "number": number,
-            "is_prime": is_prime,
-            "is_perfect": is_perfect,
-            "properties": properties,
-            "digit_sum": digit_sum,
-            "fun_fact": fun_fact,
+#         is_prime = get_is_prime(number)
+#         is_perfect = get_is_perfect(number)
+#         properties = get_number_properties(number)
+#         fun_fact = get_fun_fact(number)
+#         digit_sum = get_digit_sum(number)
 
-        }
+#         response_data = {
+#             "number": number,
+#             "is_prime": is_prime,
+#             "is_perfect": is_perfect,
+#             "properties": properties,
+#             "digit_sum": digit_sum,
+#             "fun_fact": fun_fact,
 
-        return Response(response_data, status=200)
+#         }
+
+#         return Response(response_data, status=200)
 
     # def get(self, request):
     #     number = request.GET.get("number")
@@ -146,3 +148,31 @@ class MathAPIView(APIView):
     #     }
 
     #     return Response(response_data)
+class MathAPIView(View):
+    def get(self, request):
+        number = request.GET.get("number")
+
+        if number is None:
+            return JsonResponse(get_bad_request_message(), status=400)
+
+        try:
+            number = int(number)
+        except ValueError:
+            return JsonResponse(get_bad_request_message(), status=400)
+
+        is_prime = get_is_prime(number)
+        is_perfect = get_is_perfect(number)
+        properties = get_number_properties(number)
+        fun_fact = get_fun_fact(number)
+        digit_sum = get_digit_sum(number)
+
+        response_data = {
+            "number": number,
+            "is_prime": is_prime,
+            "is_perfect": is_perfect,
+            "properties": properties,
+            "digit_sum": digit_sum,
+            "fun_fact": fun_fact,
+        }
+
+        return JsonResponse(response_data, status=200)
