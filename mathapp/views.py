@@ -28,6 +28,8 @@ def get_fun_fact(n):
 
 def get_number_properties(n):
     properties = []
+    if n < 0:
+        return properties
     if is_armstrong(n):
         properties.append("armstrong")
     if n % 2 == 0:
@@ -69,7 +71,8 @@ def get_digit_sum(n):
 # ...existing code...
 # def get_success_message():
 #     return {"message": "Request was successful", "status": 200}
-
+def get_success_message():
+    return {"message": "Request was successful", "status": 200}
 def get_bad_request_message():
     return {"number": "alphabet", "error": True},
 class MathAPIView(APIView):
