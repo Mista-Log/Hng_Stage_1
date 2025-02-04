@@ -148,31 +148,35 @@ def get_bad_request_message():
     #     }
 
     #     return Response(response_data)
+
 class MathAPIView(View):
     def get(self, request):
-        number = request.GET.get("number")
-
-        if number is None:
-            return JsonResponse(get_bad_request_message(), status=400)
-
         try:
-            number = int(number)
-        except ValueError:
-            return JsonResponse(get_bad_request_message(), status=400)
+            number = request.GET.get("number")
 
-        is_prime = get_is_prime(number)
-        is_perfect = get_is_perfect(number)
-        properties = get_number_properties(number)
-        fun_fact = get_fun_fact(number)
-        digit_sum = get_digit_sum(number)
+            if number is None:
+                return JsonResponse(get_bad_request_message(), status=400)
 
-        response_data = {
-            "number": number,
-            "is_prime": is_prime,
-            "is_perfect": is_perfect,
-            "properties": properties,
-            "digit_sum": digit_sum,
-            "fun_fact": fun_fact,
-        }
+            try:
+                number = int(number)
+            except ValueError:
+                return JsonResponse(get_bad_request_message(), status=400)
 
-        return JsonResponse(response_data, status=200)
+            is_prime = get_is_prime(number)
+            is_perfect = get_is_perfect(number)
+            properties = get_number_properties(number)
+            fun_fact = get_fun_fact(number)
+            digit_sum = get_digit_sum(number)
+
+            response_data = {
+                "number": number,
+                "is_prime": is_prime,
+                "is_perfect": is_perfect,
+                "properties": properties,
+                "digit_sum": digit_sum,
+                "fun_fact": fun_fact,
+            }
+
+            return JsonResponse(response_data, status=200)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
